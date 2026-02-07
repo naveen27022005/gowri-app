@@ -131,4 +131,5 @@ with gr.Blocks() as demo:
 
     gr.Button("Calculate").click(ui,[city,date],out)
 
-demo.launch(server_name="0.0.0.0", server_port=10000)
+demo.launch(share = True)
+
