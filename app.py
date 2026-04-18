@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import requests
 import gradio as gr
 from geopy.geocoders import Nominatim
+import os
 
 # -------------------------------------------------
 # 📍 Get Coordinates
@@ -131,5 +132,8 @@ with gr.Blocks() as demo:
 
     gr.Button("Calculate").click(ui,[city,date],out)
 
-demo.launch(share = True)
+if __name__ == "__main__":
+    # Use host-provided PORT on PaaS (Render/Railway/Fly/etc.)
+    port = int(os.environ.get("PORT", "7860"))
+    demo.launch(server_name="0.0.0.0", server_port=port, share=False)
 
